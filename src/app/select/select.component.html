@@ -1,0 +1,24 @@
+<div class="flexContainer">
+
+        <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select [(value)]="selectedCategory" (selectionChange)="categoryChange()">
+                <mat-option *ngFor="let category of data; let i = index" [value]="i">{{category.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Product</mat-label>
+            <mat-select [(value)]="selectedProduct" (selectionChange)="productChange()">
+                <mat-option *ngFor="let product of data[+selectedCategory].products; let i = index" [value]="i">{{product.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <mat-label>Brand</mat-label>
+            <mat-select [(value)]="selectedBrand" (selectionChange)="sendBrand()">
+                <mat-option *ngFor="let brand of data[+selectedCategory].products[+selectedProduct].brands; let i = index" [value]="i">{{brand.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>    
+
+</div>
